@@ -9,10 +9,17 @@ blogsRouter.get('/', async (request, response) => {
 
 
 blogsRouter.post('/', async (request, response) => {
-const blog = new Blog(request.body)
+    const blog = new Blog(request.body)
+    if (!blog.title || !blog.author) {
+        response.status(400).end()
+    }
 
-const result = await blog.save()
-    response.status(201).json(result)
+    else {
+        const result = await blog.save()
+        response.status(201).json(result)
+    }
+
+
 })
 
 

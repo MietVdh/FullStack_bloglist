@@ -104,6 +104,30 @@ describe('POST', () => {
         expect(likes[2]).toBe(0)
 
     })
+
+    test('if title is missing, server responds with 400 Bad Request', async () => {
+        const newBlog = {
+            author: 'Harry Potter',
+            url: 'www.hogwarts.com/harry',
+        }
+
+        await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    }, 10000)
+
+    test('if author is missing, server responds with 400 Bad Request', async () => {
+        const newBlog = {
+            title: 'How I beat Voldemort',
+            url: 'www.hogwarts.com/harry',
+        }
+
+        await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    }, 100000)
 })
 
 afterAll(async () => {
