@@ -27,34 +27,64 @@ beforeEach(async () => {
     await blogObject.save()
 })
 
-test('blogs are returned as json', async () => {
-    await api
-    .get('/api/blogs')
-    .expect(200)
-    .expect('Content-Type', /application\/json/)
-}, 100000)
+
+describe('GET', () => {
+
+    test('blogs are returned as json', async () => {
+        await api
+        .get('/api/blogs')
+        .expect(200)
+        .expect('Content-Type', /application\/json/)
+    }, 100000)
 
 
-test('all blogs are returned', async() => {
-    const response = await api.get('/api/blogs')
+    test('all blogs are returned', async() => {
+        const response = await api.get('/api/blogs')
 
-    expect(response.body).toHaveLength(initialBlogs.length)
+        expect(response.body).toHaveLength(initialBlogs.length)
+    })
+
+
+    test('a specific blog is within the returned blogs', async () => {
+        const response = await api.get('/api/blogs')
+
+        const titles = response.body.map(r => r.title)
+        expect(titles).toContain(
+            'Test blog 1'
+        )
+    })
+
+    test('a blog has a property \'id\'', async () => {
+        const response = await api.get('/api/blogs')
+        const id = response.body[0].id
+        expect(id).toBeDefined()
+    })
+
 })
 
 
-test('a specific blog is within the returned blogs', async () => {
-    const response = await api.get('/api/blogs')
+describe('POST', () => {
 
-    const titles = response.body.map(r => r.title)
-    expect(titles).toContain(
-        'Test blog 1'
-    )
-})
+    test('a blog gets added to the list', async () => {
+        const newBlog = {
+            title: 'Latest blog',
+            author: 'The Tester',
+            url: 'www.test.com/blog',
+            likes: 12
+        }
 
-test('a blog has a property \'id\'', async () => {
-    const response = await api.get('/api/blogs')
-    const id = response.body[0].id
-    expect(id).toBeDefined()
+        await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+
+        const response = await api.get('/api/blogs')
+        const titles = response.body.map(r => r.title)
+
+        expect(response.body).toHaveLength(initialBlogs.length + 1)
+        expect(titles).toContain('Latest blog')
+    })
 })
 
 afterAll(async () => {
