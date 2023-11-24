@@ -85,6 +85,25 @@ describe('POST', () => {
         expect(response.body).toHaveLength(initialBlogs.length + 1)
         expect(titles).toContain('Latest blog')
     })
+
+    test('likes default to zero if not specified', async () => {
+        const newBlog = {
+            title: 'Testing without likes',
+            author: 'Arthur C',
+            url: 'www.test.com/nolikes'
+        }
+
+        await api
+        .post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-Type', /application\/json/)
+
+        const response = await api.get('/api/blogs')
+        const likes = response.body.map(r => r.likes)
+        expect(likes[2]).toBe(0)
+
+    })
 })
 
 afterAll(async () => {
