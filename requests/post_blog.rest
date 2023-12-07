@@ -2,8 +2,8 @@ POST http://localhost:3003/api/blogs/ HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Some other blog title",
-    "author": "Someone else ",
-    "url": "www.test.com",
-    "likes": 12
+    "title": "How I beat Voldemort",
+    "author": "Harry Potter",
+    "url": "www.hogwarts.com/harry",
+    "likes": 3
 }
