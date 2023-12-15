@@ -2,8 +2,9 @@ POST http://localhost:3003/api/blogs/ HTTP/1.1
 content-type: application/json
 
 {
-    "title": "How I beat Voldemort",
+    "title": "How I beat Voldemort for the last time",
     "author": "Harry Potter",
     "url": "www.hogwarts.com/harry",
-    "likes": 3
+    "likes": 3,
+    "userId": "657c70655eaa8a5d6892272c"
 }
