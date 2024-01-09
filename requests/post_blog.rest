@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs/ HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RlcjIiLCJpZCI6IjY1N2M3MTJkYzhmNjY2NTk1Yjc1NDkzYiIsImlhdCI6MTcwNDgxODY3OX0.aYh7jVhFHdZRN_mykAfVx-ieIythtaLFzx_WOnewCNI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RlcjIiLCJpZCI6IjY1N2M3MTJkYzhmNjY2NTk1Yjc1NDkzYiIsImlhdCI6MTcwNDgxOTc4M30.yMw_Eto1_HnYF_URpek1y7oJBeNuPwpyibiHcuDyPF0
 
 {
-    "title": "Test after extracting token using middleware",
+    "title": "To delete",
     "author": "FullStackOpen",
     "url": "www.fullstackopen.com/en/part4/token_authentication",
-    "likes": 23
+    "likes": 123
 }
