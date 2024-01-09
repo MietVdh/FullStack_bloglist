@@ -1,10 +1,10 @@
 POST http://localhost:3003/api/blogs/ HTTP/1.1
-content-type: application/json
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RlcjIiLCJpZCI6IjY1N2M3MTJkYzhmNjY2NTk1Yjc1NDkzYiIsImlhdCI6MTcwNDgxODMzMn0.Mia0lKMeNA_e6KGY68YJ-V2QaT4K0fK2d5mjFx0H_4w
 
 {
-    "title": "How I beat Voldemort for the last time",
-    "author": "Harry Potter",
-    "url": "www.hogwarts.com/harry",
-    "likes": 3,
-    "userId": "657c70655eaa8a5d6892272c"
+    "title": "Test posting using user authentication",
+    "author": "FullStackOpen",
+    "url": "www.fullstackopen.com/en/part4/token_authentication",
+    "likes": 69
 }
